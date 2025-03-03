@@ -1,4 +1,4 @@
-from shiny import App, ui
+from shiny import App, ui, Inputs, Outputs, Session
 
 from modules.aq import airqual_ui, airqual_server
 from modules.cars import cars_ui, cars_server
@@ -13,7 +13,7 @@ app_ui = ui.page_fluid(
 )
 
 
-def server(user_in, output, session):
+def server(user_in: Inputs, output: Outputs, session: Session):
     _aq = airqual_server("air", user_in.n)
     _cars = cars_server("cars", user_in.n)
 
